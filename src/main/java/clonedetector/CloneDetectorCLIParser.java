@@ -315,6 +315,7 @@ public class CloneDetectorCLIParser {
             or.setGroup(1);
 
         } catch (ParseException e) {
+        	e.printStackTrace();
             helpFormatter.setOptionComparator(null);
             StringWriter buf = new StringWriter();
             PrintWriter pw = new PrintWriter(buf);

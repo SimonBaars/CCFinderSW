@@ -20,6 +20,7 @@ public class CloneDetector {
         //parse commandline
         OptionReader or = new OptionReader();
         new CloneDetectorCLIParser(or).commandline(args);
+        
         if (!or.isANTLRMode()) {
             or.readCommentReservedFiles();
         } else {

@@ -281,7 +281,7 @@ emptyStatement
  ;
 
 /// ExpressionStatement :
-///     [lookahead ? {{, function}] Expression ;
+///     [lookahead ∉ {{, function}] Expression ;
 expressionStatement
  : {(_input.LA(1) != OpenBrace) && (_input.LA(1) != Function)}? expressionSequence eos
  ;

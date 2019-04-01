@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.LinkOption;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
@@ -114,6 +115,7 @@ public class Lexer {
                     .append("\n");
         });
         FileAndString.writeAll(getFileListPath(), buf.toString());
+        //System.out.println("FILELIST = "+buf.toString());
     }
 
     /**
