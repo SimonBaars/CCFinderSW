@@ -7,6 +7,7 @@ import common.FileAndString;
 import common.PrintProgress;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class CCFFormatter {
@@ -67,26 +68,28 @@ public class CCFFormatter {
         buf.append("#begin{syntax error}\n#end{syntax error}\n");
         // クローンセット部
         buf.append("#begin{clone}\n");
+        
+        System.out.println("PAIR LIST = "+Arrays.deepToString(cpd.pairListTrue));
 
         PrintProgress ps = new PrintProgress(2);
         int i = 0;
         while (i < cpd.pairListTrue.length) {
-            ArrayList<Integer> x = new ArrayList<>();
+            ArrayList<Integer> cloneSet = new ArrayList<>();
             int[] i0 = cpd.pairListTrue[i];
             int[] i1;
             int distance = i0[2];
-            x.add(i0[0]);
-            x.add(i0[1]);
+            cloneSet.add(i0[0]);
+            cloneSet.add(i0[1]);
             while (true) {
                 if (i + 1 < cpd.pairListTrue.length) {
                     i0 = cpd.pairListTrue[i];
                     i1 = cpd.pairListTrue[i + 1];
                     if (i0[3] == i1[3]) {
-                        if (!x.contains(i1[0])) {
-                            x.add(i1[0]);
+                        if (!cloneSet.contains(i1[0])) {
+                            cloneSet.add(i1[0]);
                         }
-                        if (!x.contains(i1[1])) {
-                            x.add(i1[1]);
+                        if (!cloneSet.contains(i1[1])) {
+                            cloneSet.add(i1[1]);
                         }
                         i++;
                         ps.plusProgress(cpd.pairListTrue.length);
@@ -95,8 +98,9 @@ public class CCFFormatter {
                 }
                 i++;
                 ps.plusProgress(cpd.pairListTrue.length);
-                Collections.sort(x);
-                writeSet(x, distance, buf);
+                Collections.sort(cloneSet);
+                writeSet(cloneSet, distance, buf);
+                System.out.println("CLONE SET "+Arrays.toString(cloneSet.toArray()));
                 break;
             }
         }
