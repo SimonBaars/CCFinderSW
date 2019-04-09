@@ -4,6 +4,7 @@ import ccfindersw.CCFSWData;
 import clonedetector.classlist.ClonePairData;
 import clonedetector.classlist.FileData;
 import common.FileAndString;
+import common.PrettyPrinter;
 import common.PrintProgress;
 
 import java.util.ArrayList;
@@ -68,8 +69,6 @@ public class CCFFormatter {
         buf.append("#begin{syntax error}\n#end{syntax error}\n");
         // クローンセット部
         buf.append("#begin{clone}\n");
-        
-        System.out.println("PAIR LIST = "+Arrays.deepToString(cpd.pairListTrue));
 
         PrintProgress ps = new PrintProgress(2);
         int i = 0;
@@ -100,7 +99,7 @@ public class CCFFormatter {
                 ps.plusProgress(cpd.pairListTrue.length);
                 Collections.sort(cloneSet);
                 writeSet(cloneSet, distance, buf);
-                System.out.println("CLONE SET "+Arrays.toString(cloneSet.toArray()));
+                //System.out.println("CLONE SET "+Arrays.toString(cloneSet.toArray()));
                 break;
             }
         }

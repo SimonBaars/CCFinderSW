@@ -32,7 +32,6 @@ public class PreProcessEase {
         int startLine;
         int startClm;
         int startIndex;
-
         while (i < str.length()) {
             char c = str.charAt(i);
             startLine = nowLine;
@@ -109,7 +108,7 @@ public class PreProcessEase {
     }
 
     private void tokenRegister(String str, int lineS, int clmS, int lineE, int clmE, int sumStart, int sumEnd, int type) {
-        tokenListAdd(new Token(str, lineS, clmS, lineE, clmE, type));
+    	tokenListAdd(new Token(str, lineS, clmS, lineE, clmE, type));
         preListAdd(new Pre(str, lineS, clmS, lineE, clmE, type, sumStart, sumEnd));
     }
 

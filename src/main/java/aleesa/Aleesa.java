@@ -146,9 +146,7 @@ public class Aleesa {
 
     private void explore(RuleContext ctx, int indentation, boolean isFragment) {
         String ruleName = ANTLRv4Parser.ruleNames[ctx.getRuleIndex()];
-        if (!(ctx instanceof ANTLRv4Parser.GrammarSpecContext)) {
-            //general
-        } else {
+        if (ctx instanceof ANTLRv4Parser.GrammarSpecContext) {
             ANTLRv4Parser.GrammarSpecContext gtc = (ANTLRv4Parser.GrammarSpecContext) ctx;
             indentation--;
         }
@@ -160,6 +158,7 @@ public class Aleesa {
 
         for (int i = 0; i < ctx.getChildCount(); i++) {
             ParseTree element = ctx.getChild(i);
+            //System.out.println("Hello I am "+element.getText());
             if (element instanceof ANTLRv4Parser.LexerRuleSpecContext) {
                 ANTLRv4Parser.LexerRuleSpecContext x = (ANTLRv4Parser.LexerRuleSpecContext) element;
                 if (x.lexerRuleBlock() == null) {
